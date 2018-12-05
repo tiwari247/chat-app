@@ -4,9 +4,19 @@
         <meta charset="utf-8"/>
     </head>
     <body>
-        <p>Welcome to Chat App</p>
+        
+        <ol id="messages">
+        
+        </ol>
+        
+        <form id="message-form">
+            <input type="text" name="message" placeholder="Type your message here..." />
+            <button>Send</button>
+            <button>Send Location</button>
+        </form>
         
         <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/libs/jquery-3.3.1.js"></script>
         <script src="/js/index.js"></script>
     </body>
 </html>

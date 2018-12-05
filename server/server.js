@@ -23,9 +23,10 @@ io.on('connection', (socket)=>{
        console.log("User disconnected"); 
     });
     
-    socket.on("createMessage", (message)=>{
-        //console.log(message);
-        io.emit("newMessage", generateMessage(message.to,message.text));
+    socket.on("createMessage", (message, callback)=>{
+        console.log(message);
+        io.emit("newMessage", generateMessage(message.from,message.text));
+        callback("This is from the server!");
 //        socket.broadcast.emit("newMessage", {
 //            from: message.to,
 //            text : message.text,
@@ -33,7 +34,7 @@ io.on('connection', (socket)=>{
 //        });
     });
     
-    socket.emit("newMessage",generateMessage('CPT',"What's going on?"));
+//    socket.emit("newMessage",generateMessage('CPT',"What's going on?"));
     
 });
 
