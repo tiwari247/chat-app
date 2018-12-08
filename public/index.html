@@ -2,21 +2,40 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <link href="/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/styles.css" />
     </head>
     <body>
         
-        <ol id="messages">
+        <div id="myContainer" class="container-fluid">
+        <div id="myRow" class="row">
+            <div id="leftPane" class="col-md-2">
+                <h1>People</h1>
+                <hr />
+            </div>
         
-        </ol>
+            <div id="rightPane" class="col-md-10">
+                
+                
+                <ol id="messages">
         
-        <form id="message-form">
-            <input type="text" name="message" placeholder="Type your message here..." />
-            <button>Send</button>
-        </form>
-        <button id="location-message">Send Location</button>
-        
+                </ol>
+                    
+                    <div id="message">
+                    <form id="message-form">
+                        <input type="text" name="message" placeholder="Type your message here..." autofocus autocomplete="off" />
+                        <button>Send</button>    
+                    </form>
+                    <button id="location-message">Send Location</button>
+                    </div>
+                    
+            </div>
+        </div>
+        </div>
         <script src="/socket.io/socket.io.js"></script>
         <script src="/js/libs/jquery-3.3.1.js"></script>
         <script src="/js/index.js"></script>
+            
+            
     </body>
 </html>

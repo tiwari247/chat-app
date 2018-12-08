@@ -1,0 +1,56 @@
+html, body{
+    height: 100%;
+}
+
+#myContainer{
+    height: 100%;
+}
+
+#myRow{
+    height: inherit;
+}
+
+#leftPane{
+    background-color: #777; 
+}
+
+#leftPane h1{
+    color: whitesmoke;
+    padding: 5px 10px 5px 10px;
+    width: 100%;
+    margin-bottom: 0;
+    height: 50px;
+    line-height: 50px;
+}
+
+#rightPane{
+    background-color: whitesmoke;
+}
+
+#rightPane messages{
+    height: 90%;
+    overflow-y: true;
+}
+
+#message{
+    background-color: aqua;
+    position: fixed;
+    top: 95%;
+    width: 90%;
+}
+
+#message-form{
+    display: inline;
+}
+
+#message-form input{
+    width: 70%;
+}
+
+#message-form button{
+    width: 10%;
+}
+
+#message button{
+    
+}

@@ -31,7 +31,7 @@ jQuery('#message-form').on('submit', function(e){
         from : "User",
         text : jQuery('[name=message]').val()
     }, ()=>{
-        console.log("Got it!")
+        jQuery('[name=message]').val('');
     });
 });
 
@@ -48,7 +48,10 @@ jQuery("#location-message").on('click', function(){
     if(!navigator.geolocation){
         return alert("This feature not supported on your browser!");
     }
+    console.log("Clicked");
     
+    jQuery("#location-message").attr('disabled','disabled').text('Fetching...');
+    //jQuery("#location-message").disabled = true;
     navigator.geolocation.getCurrentPosition(function(location){
         //http://google.com/maps?q=28.597076899999998,77.34130680000001
 //        console.log(location.coords.latitude);
@@ -58,10 +61,15 @@ jQuery("#location-message").on('click', function(){
             from: "User",
             latitude : location.coords.latitude,
             longitude : location.coords.longitude
+        }, ()=>{
+            console.log('got it');
+            jQuery("#location-message").removeAttr('disabled').text('Send Location');
         });
         
     },function(err){
+        jQuery("#location-message").removeAttr('disabled').text('Send Location');
         console.log("Unable to fetch location",err)
+        alert('Unable to fetch location');
     });
     //navigator.geolocation.
 });
