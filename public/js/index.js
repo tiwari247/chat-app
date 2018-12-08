@@ -12,20 +12,21 @@ socket.on("newMessage", (message)=>{
     
     var formattedDate = moment().format("h:mm a"); 
     
-    var li = jQuery("<li></li>");
-    li.text(`${formattedDate}> ${message.from}: ${message.text}`);
+//    var li = jQuery("<li></li>");
+//    li.text(`${formattedDate}> ${message.from}: ${message.text}`);
+//    
+//    jQuery("#messages").append(li);
     
-    jQuery("#messages").append(li);
+    var template = jQuery('#message-template').html();
+    var html = Mustache.render(template, {
+        text: message.text,
+        from: message.from,
+        createdAt: formattedDate
+    });
+    jQuery("#messages").append(html);
+    
     
 });
-
-//socket.emit("createMessage",{
-//        to : "Andrew",
-//        text : "How are you?"
-//}, (data)=>{
-//    console.log("got it : ",data);
-//});
-
 
 jQuery('#message-form').on('submit', function(e){
     e.preventDefault();
@@ -42,12 +43,20 @@ socket.on('newLocationMessage', function(location){
     
     var formattedDate = moment().format("h:mm a");
     
-    var li = jQuery("<li></li>");
-    var a = jQuery("<a target=_blank>My Current Location</a>");
-    li.text(`${formattedDate}> ${location.from}: `);
-    a.attr('href',location.url);
-    li.append(a);
-    jQuery("#messages").append(li);
+//    var li = jQuery("<li></li>");
+//    var a = jQuery("<a target=_blank>My Current Location</a>");
+//    li.text(`${formattedDate}> ${location.from}: `);
+//    a.attr('href',location.url);
+//    li.append(a);
+    
+    var template = jQuery("#location-message-template").html();
+    var html = Mustache.render(template,{
+        from: location.from,
+        createdAt: formattedDate,
+        url: location.url
+    });
+    
+    jQuery("#messages").append(html);
 });
 
 jQuery("#location-message").on('click', function(){
@@ -79,3 +88,12 @@ jQuery("#location-message").on('click', function(){
     //navigator.geolocation.
 });
 
+
+
+
+//socket.emit("createMessage",{
+//        to : "Andrew",
+//        text : "How are you?"
+//}, (data)=>{
+//    console.log("got it : ",data);
+//});

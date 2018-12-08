@@ -71,3 +71,20 @@ html, body{
     margin-top: 3px;
     border-radius: 5px
 }
+
+.temp_top{
+    margin-bottom: 0;
+}
+
+.temp_bottom{
+    margin-top: 0;
+}
+
+.temp_top p{
+    display: inline;
+    font-weight: bold;
+}
+
+.temp_bottom p{
+    margin-top: 1px;
+}
