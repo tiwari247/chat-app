@@ -25,10 +25,12 @@ html, body{
 
 #rightPane{
     background-color: whitesmoke;
+    margin-left: 0;
 }
 
 #rightPane messages{
     height: 90%;
+    margin: 0;
     overflow-y: true;
 }
 
@@ -53,4 +55,9 @@ html, body{
 
 #message button{
     
+}
+
+#messages{
+    list-style: none;
+    padding-left: 0;
 }

@@ -9,8 +9,11 @@ socket.on('disconnect', ()=>{
 
 socket.on("newMessage", (message)=>{
 //    console.log(message);
+    
+    var formattedDate = moment().format("h:mm a"); 
+    
     var li = jQuery("<li></li>");
-    li.text(`${message.from}: ${message.text}`);
+    li.text(`${formattedDate}> ${message.from}: ${message.text}`);
     
     jQuery("#messages").append(li);
     
@@ -36,9 +39,12 @@ jQuery('#message-form').on('submit', function(e){
 });
 
 socket.on('newLocationMessage', function(location){
+    
+    var formattedDate = moment().format("h:mm a");
+    
     var li = jQuery("<li></li>");
     var a = jQuery("<a target=_blank>My Current Location</a>");
-    li.text = `${location.from}: `;
+    li.text(`${formattedDate}> ${location.from}: `);
     a.attr('href',location.url);
     li.append(a);
     jQuery("#messages").append(li);
@@ -65,7 +71,6 @@ jQuery("#location-message").on('click', function(){
             console.log('got it');
             jQuery("#location-message").removeAttr('disabled').text('Send Location');
         });
-        
     },function(err){
         jQuery("#location-message").removeAttr('disabled').text('Send Location');
         console.log("Unable to fetch location",err)
