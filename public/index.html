@@ -9,24 +9,24 @@
         
         <div id="myContainer" class="container-fluid">
         <div id="myRow" class="row">
-            <div id="leftPane" class="col-md-2">
+            <div id="leftPane" class="col-lg-2 col-md-2 col-sm-4 col-1">
                 <h1>People</h1>
                 <hr />
             </div>
         
-            <div id="rightPane" class="col-md-10">
+            <div id="rightPane" class="col-lg-10 col-md-10 col-sm-8  col-11">
                 
                 
-                <ol id="messages">
-        
+                <ol id="messages" class="text-success">
+                    
                 </ol>
                     
                     <div id="message">
-                    <form id="message-form">
-                        <input type="text" name="message" placeholder="Type your message here..." autofocus autocomplete="off" />
-                        <button>Send</button>    
+                    <form class="form-inline" id="message-form">
+                        <input type="text" name="message" placeholder="Type your message here..." autofocus autocomplete="off" class="form-control" />
+                        <button class="btn btn-primary btn-lg btn-md btn-sm btn xs">Send</button>    
                     </form>
-                    <button id="location-message">Send Location</button>
+                    <button id="location-message" class="btn btn-primary btn-lg btn-md btn-sm btn xs">Send Location</button>
                     </div>
                     
             </div>
