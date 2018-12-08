@@ -59,6 +59,11 @@ html, body{
     height: 40px;
 }
 
+#message_container{
+    height: 89%;
+    overflow-y: scroll;
+}
+
 #messages{
     list-style: none;
     padding-left: 0;
