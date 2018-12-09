@@ -7,6 +7,25 @@ socket.on('disconnect', ()=>{
     console.log("Disconnected from server");
 });
 
+function scrollToBottom(){
+    var messages = jQuery("#messages");
+    var newMessage = messages.children('li:last-child');
+    
+    var clientHeight = messages.prop('clientHeight');
+    var scrollTop = messages.prop('scrollTop');
+    var scrollHeight = messages.prop('scrollHeight');
+    
+    var newMessageHeight = newMessage.innerHeight();
+    var lastMessageHeight = newMessage.prev().innerHeight();
+    
+    if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight){
+        messages.scrollTop(scrollHeight);
+    }
+    
+    
+    
+}
+
 socket.on("newMessage", (message)=>{
 //    console.log(message);
     
@@ -25,18 +44,21 @@ socket.on("newMessage", (message)=>{
     });
     jQuery("#messages").append(html);
     
+    scrollToBottom();
     
 });
 
 jQuery('#message-form').on('submit', function(e){
     e.preventDefault();
     
-    socket.emit("createMessage", {
+    if(jQuery('[name=message]').val() !== '' ){
+        socket.emit("createMessage", {
         from : "User",
         text : jQuery('[name=message]').val()
-    }, ()=>{
-        jQuery('[name=message]').val('');
-    });
+        }, ()=>{
+            jQuery('[name=message]').val('');
+        });   
+    }
 });
 
 socket.on('newLocationMessage', function(location){
@@ -57,6 +79,9 @@ socket.on('newLocationMessage', function(location){
     });
     
     jQuery("#messages").append(html);
+    
+    scrollToBottom();
+    
 });
 
 jQuery("#location-message").on('click', function(){
