@@ -79,7 +79,7 @@ html, body{
 }
 
 #messages li{
-    padding: 3px 0 3px 15px;
+    padding: 3px 0 1px 15px;
     margin-bottom: 3px;
     margin-top: 3px;
     border-radius: 5px;
@@ -98,6 +98,7 @@ html, body{
 .temp_top p{
     display: inline;
     font-weight: bold;
+    font-size: 18px;
 }
 
 .temp_bottom p{
