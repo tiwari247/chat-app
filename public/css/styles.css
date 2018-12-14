@@ -113,3 +113,23 @@ html, body{
     left: 15px;
     width: 100%;
 }
+
+#peopleList{
+    margin: 0;
+}
+
+#peopleList ol{
+    list-style: none;
+    margin: 0;
+    max-height: 78%;
+    overflow: auto;
+}
+
+#peopleList ol li{
+    background-color: whitesmoke;
+    color: black;
+    margin-top: 5px;
+    width: 100%;
+    border-radius: 4px;
+    padding: 2px 0 2px 8px;
+}

@@ -1,10 +1,32 @@
 var socket = io();
 socket.on('connect', ()=>{
     console.log("Connected to server");
+    var params = jQuery.deparam(window.location.search);
+    
+    socket.emit('join', params, (err)=>{
+        if(err){
+            alert(err);
+            window.location.href = '/';
+        }else{
+            console.log("No error");
+        }
+    });
+    
 });
 
 socket.on('disconnect', ()=>{
     console.log("Disconnected from server");
+});
+
+socket.on('updateUserList', (users)=>{
+    var ol = jQuery("<ol></ol>");
+    users.forEach(function(user){
+        ol.append(jQuery('<li></li>').text(user));    
+    });
+    
+    jQuery('#peopleList').html(ol);
+    
+    console.log('Users list',users);
 });
 
 function scrollToBottom(){
@@ -53,7 +75,6 @@ jQuery('#message-form').on('submit', function(e){
     
     if(jQuery('[name=message]').val() !== '' ){
         socket.emit("createMessage", {
-        from : "User",
         text : jQuery('[name=message]').val()
         }, ()=>{
             jQuery('[name=message]').val('');
@@ -98,7 +119,6 @@ jQuery("#location-message").on('click', function(){
 //        console.log(location.coords.longitude);
         
         socket.emit("createLocationMessage",{
-            from: "User",
             latitude : location.coords.latitude,
             longitude : location.coords.longitude
         }, ()=>{
